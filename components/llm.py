@@ -7,14 +7,15 @@ load_dotenv()
 def get_llm(temperature: float = 0.9):
     api_key = None
 
-    # Try Streamlit secrets (cloud deployment)
+    # Try Streamlit secrets
     try:
         import streamlit as st
-        api_key = st.secrets.get("GROQ_API_KEY")
+        if "GROQ_API_KEY" in st.secrets:
+            api_key = st.secrets["GROQ_API_KEY"]
     except Exception:
         pass
 
-    # Fall back to .env (local development)
+    # Fall back to .env
     if not api_key:
         api_key = os.getenv("GROQ_API_KEY")
 
