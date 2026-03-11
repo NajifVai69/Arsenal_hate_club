@@ -4,8 +4,6 @@ from typing import TypedDict, Literal
 from components.llm import get_llm
 from chains import run_banter_chain, run_corner_chain, run_bottle_chain
 
-llm = get_llm(temperature=0.3)
-
 # --- Agent State ---
 class AgentState(TypedDict):
     user_input: str
@@ -15,7 +13,7 @@ class AgentState(TypedDict):
 
 # --- Router Node ---
 def router_node(state: AgentState) -> AgentState:
-    """Decides which chain to invoke based on user input."""
+    llm = get_llm(temperature=0.3)  # moved inside function
     prompt = f"""You are a routing agent for the Arsenal Hate Club app.
 Based on the user's input, choose ONE of these routes:
 - "banter" → general Arsenal mockery and jokes
