@@ -22,7 +22,7 @@ def get_llm(temperature: float = 0.9):
         raise ValueError("GROQ_API_KEY not found in secrets or .env!")
 
     return ChatGroq(
-        model="llama3-8b-8192",
+        model="llama-3.3-70b-versatile",
         temperature=temperature,
         groq_api_key=api_key
     )
