@@ -19,7 +19,7 @@ Keep it funny, football-savvy, and ruthlessly accurate. No mercy."""),
 corner_prompt = PromptTemplate(
     input_variables=["situation"],
     template="""You are an Arsenal tactics analyst (who secretly hates them).
-    
+
 Situation: {situation}
 
 Explain in 3 sentences why Arsenal's solution to this situation is... to win a corner.
